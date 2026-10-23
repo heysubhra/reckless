@@ -1,0 +1,69 @@
+# Local credentials and configuration
+.env
+.env.*
+!.env.example
+!.env.*.example
+.aws/
+.codex/
+.behaviors-sh/
+.agents/
+skills-lock.json
+docs/
+.netrc
+.npmrc
+.pypirc
+*.pem
+*.key
+*.p12
+*.pfx
+*.token
+*credentials*
+*secret*
+
+# Personal Recutils collections
+*.rec
+!evals/fixtures/**/*.rec
+!tests/fixtures/**/*.rec
+
+# Local model weights, checkpoints, and training output
+*.gguf
+*.safetensors
+*.onnx
+*.pt
+*.pth
+*.ckpt
+/models/
+/checkpoints/
+/outputs/
+/runs/
+/wandb/
+/mlruns/
+/lightning_logs/
+
+# Local datasets and generated evaluation artifacts
+/data/
+/datasets/
+/artifacts/
+*.log
+*.trace
+
+# Runtime and build output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+node_modules/
+dist/
+build/
+coverage/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
