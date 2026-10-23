@@ -1,9 +1,30 @@
 # Reckless
 
-Reckless is a proposed personal knowledge manager for research and writing. People can ask it to save notes, bookmarks, events, email notes, and connections between records.
+Reckless is a proposed personal knowledge manager for research and writing. It
+organizes notes, bookmarks, events, email notes, and connections in a local GNU
+Recutils collection.
 
-## How it should work
+## Version 1 harness
 
-The user sends a request to the harness. The harness sends the request to a local language model. The model returns the record type and fields to save.
+The first harness feature supports natural-language reads and inserts. It uses
+a local model to select record types and fields, choose operations, and extract
+filter or record values. The model receives the available schema, not saved
+record contents, and returns ordered JSON operations.
 
-The harness checks the model's response. It then uses Bash and GNU Recutils to save the record. The model cannot edit collection files or create shell commands. The harness rejects unclear or invalid requests without writing anything.
+The Python harness discovers record types and allowed fields from Recutils
+descriptors, validates the model response, and uses reviewed, operation-specific
+Jinja templates to construct Recutils arguments. Reads query the collection.
+Inserts are checked on temporary file copies before the originals are replaced.
+Prompts in a batch run independently and in order; one operation does not pass
+its results to the next.
+
+Version 1 does not support updates, deletes, clarification questions, or
+dependent operations. Multi-file inserts are committed one file at a time, so
+a failure during replacement can leave some files committed.
+
+## Project status
+
+The harness feature is specified but not implemented. Local OpenTelemetry traces
+are planned as best-effort review artifacts. Model evaluation and fine-tuning,
+a systematic evaluation suite, and systematic trace analysis remain future
+work.
